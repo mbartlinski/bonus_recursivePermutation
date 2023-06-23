@@ -1,0 +1,28 @@
+#include <studio.h>
+#inlcude <string.h>
+
+//function to swap characters 
+void ExchangeCharacters(char *str, int i, int j){
+  char temp = str[j];
+  str[i] = str[j];
+  str[j] = temp;
+}
+//recursive function
+void Perm(char *str, int l, int r){
+  if (l==r){
+    print("%s\n", str);
+  }
+  else{
+    for (int i = l; i<= r; i++){
+      ExchangeCharacters(str, l, i); //swapping characters
+      Perm(str, l + 1, r); //get permutations
+      ExchangeCharacters(str, l, i); 
+    }
+  }
+}
+int main(){
+  char str[] = "CAT";
+  int n = strlen(str);
+  Perm(str, 0, n - 1); //call Perm function
+  return 0;
+}
